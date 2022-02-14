@@ -69,7 +69,7 @@ def JudgeBeveling(point1, point2, point3):
 def threePoint(point3, point1, point2, d_x, d_y):
     point4 = (point1[0] + point2[0] - point3[0], point1[1] + point2[1] - point3[1])
     l1 = [point1, point2, point3, point4]
-    origin = point1
+    origin = point1#point1为原点
     for i in range(1, 4):
         if l1[i][0] < origin[0]:
             origin = l1[i]
@@ -113,6 +113,7 @@ def threePoint(point3, point1, point2, d_x, d_y):
     nx = d_x
     ny = d_y
 
+    #生成shp文件
     w = shp.Writer("POLYGON")
     w.autoBalance = 1
     w.field("ID")
@@ -141,6 +142,7 @@ def threePoint(point3, point1, point2, d_x, d_y):
             w.poly(parts)
             w.record(id)
             ans.append(vertices)
+    #生成geojson文件
     geo(ans)
 
 
